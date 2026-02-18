@@ -17,25 +17,24 @@ public class EjerciciosController {
         this.repo = repo;
     }
 
-    // Listar todos
+
     @GetMapping
     public List<Ejercicios> listar() {
         return repo.findAll();
     }
 
-    // Obtener uno por ID
+
     @GetMapping("/{id}")
     public Ejercicios obtener(@PathVariable Integer id) {
         return repo.findById(id).orElse(null);
     }
 
-    // Crear nuevo
     @PostMapping
     public Ejercicios crear(@RequestBody Ejercicios ejercicio) {
         return repo.save(ejercicio);
     }
 
-    // Actualizar
+
     @PutMapping("/{id}")
     public Ejercicios actualizar(@PathVariable Integer id, @RequestBody Ejercicios nuevo) {
         Ejercicios ejercicio = repo.findById(id).orElse(null);
@@ -53,13 +52,13 @@ public class EjerciciosController {
         return null;
     }
 
-    // Eliminar
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Integer id) {
         repo.deleteById(id);
     }
 
-    // Listar por grupo
+
     @GetMapping("/grupo/{grupo}")
     public List<Ejercicios> listarPorGrupo(@PathVariable String grupo) {
         return repo.findAll().stream()
@@ -67,9 +66,7 @@ public class EjerciciosController {
                 .toList();
     }
 
-    // EJERCICIOS POR URL (LECTURAS)
 
-    // ---------- LECTURA 1 ----------
     @GetMapping("/lectura1")
     public String lectura1() {
         return """
@@ -98,7 +95,7 @@ public class EjerciciosController {
         return "Incorrecto. Intenta nuevamente.";
     }
 
-    // ---------- LECTURA 2 ----------
+
     @GetMapping("/lectura2")
     public String lectura2() {
         return """
@@ -127,7 +124,7 @@ public class EjerciciosController {
         return "Incorrecto. No es la opción correcta.";
     }
 
-    // ---------- LECTURA 3 ----------
+
     @GetMapping("/lectura3")
     public String lectura3() {
         return """

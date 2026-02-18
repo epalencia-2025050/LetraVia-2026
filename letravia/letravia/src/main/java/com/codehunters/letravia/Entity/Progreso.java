@@ -1,5 +1,7 @@
 package com.codehunters.letravia.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,10 +27,17 @@ public class Progreso {
     @Column(name = "lectura_id")
     private Long lecturaId;
 
-    // Constructor vacío
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "progreso_id")
+    private List<ProgresoEjercicio> ejercicios = new ArrayList<>();
+
+    // getter y setter
+    public List<ProgresoEjercicio> getEjercicios() { return ejercicios; }
+    public void setEjercicios(List<ProgresoEjercicio> ejercicios) { this.ejercicios = ejercicios; }
+
     public Progreso() {}
 
-    // Getters y Setters
+
     public Long getId() {
         return id;
     }

@@ -8,7 +8,7 @@ public class Ejercicios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;  // Debe ser autoincremental en MySQL
+    private Integer id;
 
     @Column(nullable = false)
     private String pregunta;
@@ -28,7 +28,7 @@ public class Ejercicios {
     @Column(nullable = false)
     private String grupo;
 
-    // Getters y setters
+
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public String getPregunta() { return pregunta; }
@@ -44,7 +44,7 @@ public class Ejercicios {
     public String getGrupo() { return grupo; }
     public void setGrupo(String grupo) { this.grupo = grupo; }
 
-    // Constructores
+
     public Ejercicios() {}
     public Ejercicios(String pregunta, String opcion1, String opcion2, String opcion3, String opcionCorrecta, String grupo) {
         this.pregunta = pregunta;
