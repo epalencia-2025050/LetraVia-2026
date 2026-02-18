@@ -18,6 +18,7 @@ public class MenuController {
         menu.put("opcion1", "/Menu/cliente");
         menu.put("opcion2", "/Menu/Abcdario");
         menu.put("opcion3", "/Menu/Lecturas");
+        menu.put("opcion4", "/Menu/Progreso");
         menu.put("salir", "/menu/salir");
 
         return menu;

@@ -1,7 +1,8 @@
 package com.codehunters.letravia.Controller;
 
-import com.codehunters.letravia.LecturasRepository;
-import com.codehunters.letravia.entity.Lecturas;
+import com.codehunters.letravia.Repository.LecturasRepository;
+import com.codehunters.letravia.Entity.Lecturas;
+import com.codehunters.letravia.service.LecturasService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
@@ -9,29 +10,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/Lecturas", "/Menu/Lecturas"})
+@RequestMapping({"/lecturas", "/Menu/lecturas"})
 public class LecturasController {
 
-    private final LecturasRepository repo;
+    private LecturasService lecturasService;
 
-    public LecturasController(LecturasRepository repo){
-        this.repo = repo;
+    public LecturasController(LecturasService lecturasService) {
+        this.lecturasService = lecturasService;
     }
 
-    @GetMapping
-    public List<Lecturas> listarLecturas(){
-        return repo.findAll();
+    @PostMapping public Lecturas crear(@RequestBody Lecturas lectura) {
+        return lecturasService.crearLectura(lectura);
     }
 
-    @GetMapping("/{id}")
-    public Lecturas obtenerLectura(@PathVariable Long id) {
-        return repo.findById(id).orElse(null);
+    @GetMapping public List<Lecturas> listar() {
+        return lecturasService.obtenerTodas();
     }
 
-    @PostMapping
-    public Lecturas crearLectura(@RequestBody Lecturas lectura) {
-        return repo.save(lectura);
+    @GetMapping("/{id}") public Lecturas obtener(@PathVariable Long id) {
+        return lecturasService.obtenerPorId(id);
     }
 
+    @PutMapping("/{id}") public Lecturas actualizar(@PathVariable Long id, @RequestBody Lecturas lectura) {
+        return lecturasService.actualizarLectura(id, lectura);
+    }
 
+    @DeleteMapping("/{id}") public void eliminar(@PathVariable Long id) {
+        lecturasService.eliminarLectura(id);
+    }
 }

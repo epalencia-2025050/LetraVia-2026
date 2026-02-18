@@ -1,4 +1,4 @@
-package com.codehunters.letravia.entity;
+package com.codehunters.letravia.Entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -17,8 +17,7 @@ public class Lecturas {
     @Column(name = "nivel_lectura")
     private String nivelLectura;
 
-    @Lob
-    @Column(name = "documento")
+    @Column(columnDefinition = "TEXT")
     private String documento;
 
     @ManyToMany(mappedBy = "lecturas")

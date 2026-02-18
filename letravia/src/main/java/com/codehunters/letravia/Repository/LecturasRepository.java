@@ -1,6 +1,6 @@
-package com.codehunters.letravia;
+package com.codehunters.letravia.Repository;
 
-import com.codehunters.letravia.entity.Lecturas;
+import com.codehunters.letravia.Entity.Lecturas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
